@@ -2,15 +2,16 @@
 //Declare Global intreger
 const int trigPin = 3;
 const int echoPin = 2;
-int cm = 100;
+int cm = 0;
 Servo servongho;
 
 void setup() {
   Serial.begin(9600);
-  servongho.attach(7);
+  servongho.attach(8);
 }
 
-long microsecondsToCentimeters(long microseconds){
+long microsecondsToCentimeters(long microseconds)
+{
   return microseconds / 29 / 2;
 }
 
@@ -25,21 +26,23 @@ void loop() {
   digitalWrite(trigPin, LOW);
   pinMode(echoPin, INPUT);
   duration = pulseIn(echoPin, HIGH);
+
   cm = microsecondsToCentimeters(duration);
+
   Serial.print(cm);
   Serial.print("cm");
   Serial.println();
   delay(100);
   if (cm <= 10) {
-    Serial.print("[UltraStatus] Object Detected!");
-    Serial.println();
-    servongho.write(90);
-    delay(50);
-    servongho.write(-90);
+    Serial.println("[UltraStatus] Object Detected!");
+    servongho.write(12 0);
+    delay(1000);
+    servongho.write(0);
+    delay(1000); 
   }
   else {
-    Serial.print("[UltraStatus] No Object Detected.");
-    Serial.println();
+    Serial.println("[UltraStatus] No Object Detected.");
+    servongho.write(0);
   }
   delay(1000);
 }
