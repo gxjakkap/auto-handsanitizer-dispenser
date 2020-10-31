@@ -33,10 +33,10 @@ void loop() {
   Serial.print("cm");
   Serial.println();
   delay(100);
-  if (cm <= 10) {
+  if (cm <= 15) {
     Serial.println("[UltraStatus] Object Detected!");
-    servongho.write(12 0);
-    delay(1000);
+    servongho.write(180);
+    delay(2000);
     servongho.write(0);
     delay(1000); 
   }
